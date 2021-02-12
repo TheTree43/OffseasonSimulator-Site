@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from .models import Flowchart
 # Create your views here.
+def about(request):
+    flowchart = Flowchart.objects
+    return render(request, 'flowchart/about.html', {'flowchart':flowchart})
+
+
 def Packers(request):
     flowchart = Flowchart.objects
     return render(request, 'flowchart/Packers.html', {'flowchart':flowchart})
