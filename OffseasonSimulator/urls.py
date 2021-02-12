@@ -15,7 +15,6 @@ urlpatterns = [
     path('simulator', views.simulator, name='simulator' ),
 
     path('about', flowchart.views.about, name='about' ),
-
     path('Packers', flowchart.views.Packers, name='Packers' ),
     path('Bears', flowchart.views.Bears, name='Bears' ),
     path('Vikings', flowchart.views.Vikings, name='Vikings' ),
