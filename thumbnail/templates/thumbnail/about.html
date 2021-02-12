@@ -55,8 +55,8 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ">
           <a class="nav-link " aria-current="page" href="simulator">Simulator</a>
-          <a class="nav-link active" href="{% url 'home' %}">Home</a>
-          <a class="nav-link" href="{% url 'about' %}">About</a>
+          <a class="nav-link " href="{% url 'home' %}">Home</a>
+          <a class="nav-link active" href="{% url 'about' %}">About</a>
 
         </div>
       </div>
@@ -69,22 +69,59 @@
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Welcome Football Fan</h1>
-        <p class="lead text-muted">Have you ever been doing a draft simulation, but realized that it skips a step? NFL free agency starts before the draft, and
-        deciding whether to retain, trade, extend, restructure, or release players, acquiring players on the open
-        Free Agent market define your draft strategy. Without knowing the moves your team makes, its hard to know which positions
-        to target. It's even hard to know if you had a good draft situation
-        <br><br>
-        This tool takes the guess work out of draft simulating by first simulating the pre-draft offseason.
+        <h1 class="fw-light">About the Offseason Simulator</h1>
+        <p class="lead text-muted">The first step of the simulator is to make moves that create cap space. The administrator
+of this site researched local and national reports, and made educated guesses as to what moves
+will be made. These moves do not change when you re run the simulator<br><br>
+
+The next step is to make the key internal decision. One player from previous year's roster
+is highlighted. Will he stay, or will he go? The simulator will randomly decide this key player's fate. <br><br>
+
+Next, a top external target is identified. This is typically a high value free agent, though it may be a trade candidate. The simulator will randomly attempt
+to sign or trade for the top target.<br><br>
+
+Finally, depending on the results of the internal decision and top external targer,
+the simulator will make a final cut to make cap room to sign the draft class, do nothing,
+or sign generic free agents. These unnamed players can be thought of as the second or third
+wave of free agents at the listed position. They are decent/average players, who can be
+trusted to fill out the starting lineup, or can be used in rotations. <br><br>
+
+After the draft, there will always be final UDFA and veteran signings. These are not mentioned
+by the simulator, and are usually camp bodies, with a chance to battle for depth roles.
         </p>
         <p>
-          <a href="simulator" class="btn btn-dark my-2">Simulate!</a>
-          <a href="about" class="btn btn-secondary my-2">Learn More</a>
+          <a href="{% url 'home' %}" class="btn btn-dark my-2">Return to Home Page</a>
+
         </p>
       </div>
     </div>
   </section>
 
+  <div class="album py-6 bg-light">
+          <div class="container">
+
+            <div class="row">
+
+             {% for thumbnail in thumbnails.all %}
+              <div class="col-md-3">
+                <div class="card mb-3 box-shadow">
+                  <img class="card-img-top" src="{{thumbnail.image.url}}" alt="Card image cap">
+                  <div class="card-body">
+                    <p class="card-text">{{thumbnail.summary}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <a href="{{thumbnail.team}}" class="btn btn-sm btn-outline-secondary">View</a>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+             {%endfor%}
+          </div>
+        </div>
+    </div>
 
 </main>
 
